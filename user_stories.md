@@ -10,9 +10,10 @@
 *As a developer, I want the survey to generate a 'View Results' button when the click threshold has been met.
 *As a developer, I need to make sure the same pic doesn't repeat after a click.
 
-##**Marketing:**##
+**##Marketing:##**
 
 *Marketing professionals need to be able to easily view individual research participant selections
+#
 *Marketing professionals need to be able to easily view the total participant selections of multiple users
 *Marketing professionals need to have easy access to the stored data without needing to go through the survey themselves (thus diluting the data)
 
