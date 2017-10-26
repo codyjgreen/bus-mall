@@ -22,7 +22,7 @@
 
 3. Marketing team should be able to easily access the stored data.
 
-**Research Participant**
+**Participant**
 
 1. Research participants need to know what they are supposed to do when they get to the page (clear directions above the picture selection area possibly).
 
