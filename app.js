@@ -61,7 +61,7 @@ function surveyEnd() {
   userClick.appendChild(list);
   for (var i = 0; i < itemArray.length; i++) {
     var listEL = document.createElement('li');
-    listEL.textContent = itemArray[i].clicks + '   ' + ' votes for the ' + ' ' + itemArray[i].imageName + ' ' + itemArray[i].filePath;
+    listEL.textContent = '(' + itemArray[i].clicks + '   ' + ' votes ' + ') ' + ' for the ' + ' ' + itemArray[i].imageName + ' ' + ' ( ' + itemArray[i].filePath + ' )';
     list.appendChild(listEL);
   // userClick.appendChild(showResultsButton);
   // userClick.removeEventListener('click', handleUserClick);

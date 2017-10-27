@@ -5,3 +5,19 @@ img {
 button {
   background-color: blue;
 }
+
+ul {
+  width: 50%;
+  text-align: center;
+  margin: 20px auto;
+  border: 3px double black;
+  padding: 10px;
+  background-color: cyan;
+}
+
+#pictures {
+  text-align: center
+}
+#left,#center,#right {
+  border: 3px double black;
+}
