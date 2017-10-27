@@ -53,8 +53,6 @@ var randomIndex3 = Math.floor(Math.random() * itemArray.length);
 //function to end the survey
 
 function surveyEnd() {
-  // var showResults = document.createElement('button');
-  // showResults.textContent = 'Show Results';
   userClick.removeEventListener('click', handleUserClick);
   var list = document.createElement('ul');
   list.textContent = 'Results';
@@ -63,18 +61,6 @@ function surveyEnd() {
     var listEL = document.createElement('li');
     listEL.textContent = '(' + itemArray[i].clicks + '   ' + ' votes ' + ') ' + ' for the ' + ' ' + itemArray[i].imageName + ' ' + ' ( ' + itemArray[i].filePath + ' )';
     list.appendChild(listEL);
-  // userClick.appendChild(showResultsButton);
-  // userClick.removeEventListener('click', handleUserClick);
-
-  // list of images and how many clicks were made as well as filepaths
-
-  // var list = document.createElement('ul');
-  // list.textContent = 'Results';
-  // userClick.appendChild(list);
-  // for (var i = 0; i < itemArray.length; i++) {
-  //   var listEL = document.createElement('li');
-  //   listEL.textContent = itemArray[i].clicks + '   ' + ' votes for the ' + ' ' + itemArray[i].imageName + ' ' + itemArray[i].filePath;
-  //   list.appendChild(listEL);
   }
 }
 
@@ -136,7 +122,7 @@ function handleUserClick(event) {
     alert(' Pick an Item! ');
   }
   console.log('I Clicked ' + event.target.id);
-
+  console.log('Guess # ' + surveyLength);
   surveyLength += 1;
 
   images();
