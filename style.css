@@ -82,3 +82,7 @@ ul {
   text-align: center;
   font-size: 25px;
 }
+canvas {
+  width: 75%;
+  height: 500px;
+}
