@@ -3,7 +3,11 @@
 //Array of images pushed to from item
 
 var itemArray = [];
+var nameArray = [];
 var lastIndex = [];
+var totalClicks = [];
+var viewResultsButton = document.createElement('button');
+var canvas = document.getElementById('myChart');
 //variable to end the survey after 25 clicks
 var surveyLength = 0;
 
@@ -21,6 +25,7 @@ function Item (imageName, filePath) {
   this.clicks = 0;
   this.timesDisplayed = 0;
   itemArray.push(this);
+  nameArray.push(this.imageName);
 }
 
 //items
@@ -51,18 +56,26 @@ var randomIndex2 = Math.floor(Math.random() * itemArray.length);
 var randomIndex3 = Math.floor(Math.random() * itemArray.length);
 
 //function to end the survey
-
 function surveyEnd() {
-  userClick.removeEventListener('click', handleUserClick);
-  var list = document.createElement('ul');
-  list.textContent = 'Results';
-  userClick.appendChild(list);
+  viewResultsButton.textContent = 'View Results';
+  pictures.appendChild(viewResultsButton);
+  pictures.removeEventListener('click', handleUserClick);
   for (var i = 0; i < itemArray.length; i++) {
-    var listEL = document.createElement('li');
-    listEL.textContent = '(' + itemArray[i].clicks + '   ' + ' votes ' + ') ' + ' for the ' + ' ' + itemArray[i].imageName + ' ' + ' ( ' + itemArray[i].filePath + ' )';
-    list.appendChild(listEL);
-  }
-}
+    totalClicks.push(itemArray[i].clicks);
+  };
+};
+
+// function surveyEnd() {
+//   userClick.removeEventListener('click', handleUserClick);
+//   var list = document.createElement('ul');
+//   list.textContent = 'Results';
+//   userClick.appendChild(list);
+//   for (var i = 0; i < itemArray.length; i++) {
+//     var listEL = document.createElement('li');
+//     listEL.textContent = '(' + itemArray[i].clicks + '   ' + ' votes ' + ') ' + ' for the ' + ' ' + itemArray[i].imageName + ' ' + ' ( ' + itemArray[i].filePath + ' )';
+//     list.appendChild(listEL);
+//   }
+// }
 
 //function to load images to page
 
@@ -127,7 +140,73 @@ function handleUserClick(event) {
 
   images();
 }
+var data = {
+  //Labels = imageName from each image object
+  labels: nameArray,
+  datasets: [
+    {
+      label: 'Product Chosen',
+      backgroundColor: [
+        'rgba(230, 25, 75, 0.2)',
+        'rgba(60, 180, 75, 0.2)',
+        'rgba(255, 225, 25, 0.2)',
+        'rgba(0, 130, 200, 0.2)',
+        'rgba(245, 130, 48, 0.2)',
+        'rgba(145, 30, 180, 0.2)',
+        'rgba(70, 240, 240, 0.2)',
+        'rgba(240, 50, 230, 0.2)',
+        'rgba(210, 245, 60, 0.2)',
+        'rgba(250, 190, 190, 0.2)',
+        'rgba(0, 128, 128, 0.2)',
+        'rgba(230, 190, 255, 0.2)',
+        'rgba(170, 110, 40, 0.2)',
+        'rgba(255, 250, 200, 0.2)',
+        'rgba(128, 0, 0, 0.2)',
+        'rgba(170, 255, 195, 0.2)',
+        'rgba(128, 128, 0, 0.2)',
+        'rgba(255, 215, 180, 0.2)',
+        'rgba(0, 0, 128, 0.2)',
+        'rgba(128, 128, 128, 0.2)',
 
+      ],
+      borderColor: [
+        'rgba(255,99,132,1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)'
+
+      ],
+      borderWidth: 1,
+      data: totalClicks,
+    },
+  ]
+};
+
+//Function to Draw Chart
+function drawChart() {
+  var ctx = canvas.getContext('2d');
+  var myBarChart = new Chart(ctx, {
+    type: 'bar',
+    data: data,
+  });
+}
 images();
 
-userClick.addEventListener('click', handleUserClick);
+pictures.addEventListener('click', handleUserClick);
+viewResultsButton.addEventListener('click', drawChart);
